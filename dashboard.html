@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YAAS GLOW - Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #240047, #3d0066);
+      color: white;
+      text-align: center;
+    }
+    header {
+      background: #1c0033;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      margin: 50px auto;
+      max-width: 800px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: #32004e;
+      padding: 30px 20px;
+      border-radius: 16px;
+      transition: 0.3s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background: #4a007a;
+    }
+    .card a {
+      text-decoration: none;
+      color: #00e0ff;
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      padding: 20px;
+      background: #1c0033;
+    }
+  </style>
+</head>
+<body>
+  <header>YAAS GLOW - Team Dashboard</header>
+  <div class="container">
+    <h2>Welcome to the Internal Panel</h2>
+    <p>Select a section to manage</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Customer Orders</h3>
+        <a href="orders.html">Enter / View Orders</a>
+      </div>
+      <div class="card">
+        <h3>Inventory Updates</h3>
+        <a href="inventory.html">Manage Inventory</a>
+      </div>
+      <div class="card">
+        <h3>Product Information</h3>
+        <a href="products.html">Update Products</a>
+      </div>
+      <div class="card">
+        <h3>Customer Feedback</h3>
+        <a href="feedback.html">View / Add Feedback</a>
+      </div>
+    </div>
+  </div>
+  <footer>&copy; 2025 YAAS GLOW Team Panel. Internal Use Only.</footer>
+</body>
+</html>

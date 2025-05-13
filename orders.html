@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Orders - YAAS GLOW</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #240047, #3d0066);
+      color: white;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #32004e;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #00e0ff;
+      color: #000;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #00b5cc;
+    }
+    a.back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #00e0ff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Customer Order Entry</h1>
+  <form id="orderForm">
+    <label for="date">Order Date:</label>
+    <input type="date" id="date" name="date" required />
+
+    <label for="name">Customer Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter full name" required />
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required />
+
+    <label for="address">Delivery Address:</label>
+    <textarea id="address" name="address" rows="3" required></textarea>
+
+    <label for="product">Product Ordered:</label>
+    <input type="text" id="product" name="product" placeholder="e.g., Sandhimayanandaka Tailam" required />
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity" min="1" required />
+
+    <label for="payment">Payment Mode:</label>
+    <select id="payment" name="payment" required>
+      <option value="">Select</option>
+      <option value="Online">Online</option>
+      <option value="COD">Cash on Delivery</option>
+    </select>
+
+    <button type="submit">Submit Order</button>
+  </form>
+
+  <a class="back" href="dashboard.html">← Back to Dashboard</a>
+
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("Order submitted! (Functionality to save to Google Sheet will be added.)");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
