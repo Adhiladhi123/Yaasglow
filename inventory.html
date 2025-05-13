@@ -29,7 +29,7 @@
       margin-bottom: 5px;
       font-weight: bold;
     }
-    input, select, datalist {
+    input, select {
       width: 100%;
       padding: 10px;
       margin-bottom: 20px;
@@ -63,14 +63,15 @@
   <h1>Inventory Update</h1>
   <form id="inventoryForm">
     <label for="product">Product Name:</label>
-    <input list="productList" id="product" name="product" placeholder="Select product" required />
-    <datalist id="productList">
-      <option value="Floor Cleaner">
-      <option value="Dishwash 1L">
-      <option value="Dishwash 500ML">
-      <option value="Herbal Soap">
-      <option value="Washing Soap">
-    </datalist>
+    <select id="product" name="product" required>
+      <option value="">Select Product</option>
+      <option value="Sandhimayanandaka Tailam">Sandhimayanandaka Tailam</option>
+      <option value="Floor Cleaner">Floor Cleaner</option>
+      <option value="Dishwash 1L">Dishwash 1L</option>
+      <option value="Dishwash 500ML">Dishwash 500ML</option>
+      <option value="Herbal Soap">Herbal Soap</option>
+      <option value="Washing Soap">Washing Soap</option>
+    </select>
 
     <label for="stock">Stock Quantity:</label>
     <input type="number" id="stock" name="stock" min="0" required />
@@ -82,43 +83,47 @@
       <option value="Removed">Stock Removed</option>
     </select>
 
-    <!-- Automatically filled team ID (replace with actual session logic if using login system) -->
-    <input type="hidden" id="updatedBy" name="updatedBy" value="8590687311" />
+    <label for="updatedBy">Updated By (Team ID):</label>
+    <select id="updatedBy" name="updatedBy" required>
+      <option value="">Select Team ID</option>
+      <option value="8590687311">8590687311</option>
+      <option value="9400857329">9400857329</option>
+      <option value="9946708178">9946708178</option>
+      <option value="7012870590">7012870590</option>
+    </select>
 
     <button type="submit">Submit Inventory</button>
   </form>
 
   <a class="back" href="dashboard.html">← Back to Dashboard</a>
 
-<script>
-  document.getElementById("inventoryForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+  <script>
+    document.getElementById("inventoryForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-    const data = {
-      product: document.getElementById("product").value,
-      stock: document.getElementById("stock").value,
-      updateType: document.getElementById("updateType").value,
-      updatedBy: document.getElementById("updatedBy").value
-    };
+      const formData = {
+        product: document.getElementById("product").value,
+        stock: document.getElementById("stock").value,
+        updateType: document.getElementById("updateType").value,
+        updatedBy: document.getElementById("updatedBy").value
+      };
 
-    fetch("https://script.google.com/macros/s/AKfycbzcWU0Nbe_eqk8VKCkMxZq9iF-sRLqLA8ymHWspYCBqiR3ReHZZJ1Nmpe708XQOWc0Hog/exec", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(response => response.text())
-    .then(responseText => {
-      alert("Inventory update submitted to Google Sheet!");
-      document.getElementById("inventoryForm").reset();
-    })
-    .catch(error => {
-      console.error("Error!", error.message);
-      alert("Failed to submit. Try again.");
+      fetch("https://script.google.com/macros/s/AKfycbz8MQEilHs2DKtluvye3bsql3-QPD5q5CnMXmIgSUp5LQVJG6oj6QTZWXDcGMEsK0QlsA/exec", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => response.text())
+      .then(data => {
+        alert("Inventory update submitted successfully!");
+        document.getElementById("inventoryForm").reset();
+      })
+      .catch(error => {
+        alert("Error submitting inventory: " + error);
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
